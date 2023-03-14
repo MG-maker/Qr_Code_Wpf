@@ -1,0 +1,152 @@
+﻿<Window
+    x:Class="Qr_Code_2_Wpf.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Qr_Code_2_Wpf"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="900"
+    Height="550"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Grid Loaded="Grid_Loaded">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Offset="1" Color="LightGray" />
+                <GradientStop Offset="0" Color="WhiteSmoke" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid
+            x:Name="DragGrid"
+            Height="50"
+            VerticalAlignment="Top"
+            Background="WhiteSmoke"
+            MouseDown="DragGrid_MouseDown">
+
+            <TextBlock
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="22"
+                FontWeight="Bold"
+                Foreground="LightSlateGray"
+                Text="Wpf Application QRCode" />
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button
+                    Click="ButtonMinimize_Click"
+                    Content="🗕"
+                    Style="{StaticResource ButtonS}" />
+                <!--<Button
+                Click="WindowStateButton_Click"
+                Content="☐"
+                Style="{StaticResource ButtonS}" />-->
+                <Button
+                    Click="CloseButton_Click"
+                    Content="✗"
+                    Style="{StaticResource ButtonS}" />
+
+            </StackPanel>
+
+        </Grid>
+
+        <!--  Menu  -->
+        <Grid
+            Width="300"
+            Height="500"
+            Margin="0,50,0,0"
+            HorizontalAlignment="left"
+            VerticalAlignment="top">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Offset="1" Color="LightGray" />
+                    <GradientStop Offset="0" Color="WhiteSmoke" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <materialDesign:TransitioningContent
+                x:Name="TransitionContentSlide"
+                BorderThickness="0"
+                OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft,
+                Duration=0:0:0.2}">
+                <Border
+                    x:Name="TransitionGrid"
+                    Height="60"
+                    VerticalAlignment="Top"
+                    BorderBrush="Gold"
+                    BorderThickness="2">
+                    <Grid
+                        Width="10"
+                        Height="60"
+                        Margin="0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Gold" />
+                </Border>
+            </materialDesign:TransitioningContent>
+
+            <ListView
+                x:Name="ListViewMenu"
+                VerticalAlignment="top"
+                SelectionChanged="ListView_SelectionChanged">
+
+                <ListViewItem Height="60" Foreground="SlateGray">
+                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Kind="QrCodeEdit" />
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            FontSize="21"
+                            Text="Create QrCode" />
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem Height="60" Foreground="SlateGray">
+                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Kind="QrCodeEdit" />
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            FontSize="21"
+                            Text="Scan QrCode" />
+                    </StackPanel>
+                </ListViewItem>
+
+                <ListViewItem Height="60" Foreground="SlateGray">
+                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Width="30"
+                            Height="30"
+                            Kind="QrCodeEdit" />
+                        <TextBlock
+                            Margin="10,0"
+                            VerticalAlignment="Center"
+                            FontSize="21"
+                            Text="WebCamScan QrCode" />
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+
+        </Grid>
+
+        <Grid
+            x:Name="GridContent"
+            Width="580"
+            Height="490"
+            Margin="300,50,0,0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch" />
+
+    </Grid>
+</Window>
